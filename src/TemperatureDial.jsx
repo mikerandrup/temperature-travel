@@ -5,7 +5,6 @@ import classnames from 'classnames';
 const markingCount = 120;
 const startDegrees = -160;
 const stopDegrees = 160;
-const absTempBound = Math.abs(markingCount / 2);
 
 export default class TemperatureDial extends Component {
 
