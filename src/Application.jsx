@@ -5,7 +5,7 @@ import SettingsView from './SettingsView';
 
 import appViews from './constants/AppViews';
 
-const CURRENT_VIEW = appViews.TemperatureView;
+const CURRENT_VIEW = appViews.MapView;
 
 export default class Application extends Component {
   render() {
