@@ -1,0 +1,50 @@
+.container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  background-color: #08C;
+  color: #FFF;
+}
+
+.marking {
+  background-color: #BBB;
+  width: 1px;
+  height: 20px;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform-origin: 0 120px;
+}
+
+.current {
+  width: 3px;
+  background-color: #CCC;
+}
+
+.target {
+  width: 5px;
+  height: 30px;
+  background-color: #FFF;
+}
+
+.between {
+  width: 2px;
+  background-color: #CCC;
+}
+
+.targetTemp {
+  position: absolute;
+  font-size: 6em;
+  top: 32%;
+  width: 100%;
+  text-align: center;
+}
+
+.targetStatus {
+  position: absolute;
+  font-size: 0.73em;
+  top: 33%;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+}
