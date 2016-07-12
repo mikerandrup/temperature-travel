@@ -1,0 +1,42 @@
+.carouselContainer {
+  width: 100%;
+  overflow-x: hidden;
+  cursor: pointer;
+}
+
+.carouselMover {
+  left: 0;
+  position: relative;
+  transition: left 100ms ease-in-out;
+}
+
+.carouselItem {
+  vertical-align: top;
+  display: inline-block;
+  border: dashed red 1px;
+}
+
+.dotHolder {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.dot {
+  display: inline-block;
+  height: 0.5em;
+  width: 0.5em;
+  border-radius: 100%;
+  transition: all 150ms ease-in-out;
+  vertical-align: middle;
+  &:not(:last-child) {
+    margin-right: 0.5em;
+  }
+  background-color: #888;
+}
+
+.active {
+  width: 0.65em;
+  height: 0.65em;
+  background-color: #FFF;
+}
