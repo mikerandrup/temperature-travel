@@ -13,7 +13,6 @@
 .carouselItem {
   vertical-align: top;
   display: inline-block;
-  border: dashed red 1px;
 }
 
 .dotHolder {
@@ -32,7 +31,7 @@
   &:not(:last-child) {
     margin-right: 0.5em;
   }
-  background-color: #888;
+  background-color: #000;
 }
 
 .active {
