@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import TemperatureDial from './TemperatureDial';
-
-const viewData = {
-  currentTemp: 83,
-  targetTemp: 72,
-};
+import SimpleCarousel from './SimpleCarousel';
+import DestinationPanel from './DestinationPanel';
+import DistanceSpeedPanel from './DistanceSpeedPanel';
+import panelStyles from './styles/infopanel.scss';
 
 export default class TemperatureView extends Component {
   render() {
     return (
       <div>
-        <h1>TemperatureView</h1>
-        <TemperatureDial {...viewData} />
+        <div className={panelStyles.container}>
+          <SimpleCarousel>
+            <DestinationPanel {...this.props} />
+            <DistanceSpeedPanel {...this.props} />
+          </SimpleCarousel>
+        </div>
+        <TemperatureDial {...this.props} />
       </div>
     );
   }
