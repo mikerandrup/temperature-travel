@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import classnames from 'classnames';
 import appViews from './constants/AppViews';
 import styles from './styles/navmenu.scss';
+import appViewActions from './actions/AppViewActions';
 
 export default class NavMenu extends Component {
 
@@ -21,7 +22,7 @@ export default class NavMenu extends Component {
     return (
       <div className={styles.container}>
 
-        <div
+        <div onClick={appViewActions.temperatureViewActivated}
           className={classnames({
             [styles.navitem]: true,
             [styles.active]: isTemperature
@@ -29,14 +30,16 @@ export default class NavMenu extends Component {
           Temperature
         </div>
 
-        <div className={classnames({
+        <div onClick={appViewActions.mapViewActivated}
+          className={classnames({
             [styles.navitem]: true,
             [styles.active]: isMap
         })}>
           Map View
         </div>
 
-        <div className={classnames({
+        <div onClick={appViewActions.settingsViewActivated}
+          className={classnames({
             [styles.navitem]: true,
             [styles.active]: isSettings
         })}>
