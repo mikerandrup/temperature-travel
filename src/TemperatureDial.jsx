@@ -62,6 +62,10 @@ export default class TemperatureDial extends Component {
         <div className={styles.targetStatus}>
           {statusText}
         </div>
+        <div className={styles.buttonHolder}>
+          <span className={this.decrease}>▼</span>
+          <span className={this.increase}>▲</span>
+        </div>
       </div>
     );
   }
