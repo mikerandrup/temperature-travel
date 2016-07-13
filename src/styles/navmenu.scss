@@ -1,0 +1,25 @@
+.container {
+  background: #003;
+  position: absolute;
+  height: 80px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  vertical-align: middle;
+}
+
+.navitem {
+  display: inline-block;
+  width: 33.333%;
+  background-color: #000;
+  color: #AAA;
+  height: 100%;
+
+  text-align: center;
+}
+
+.active {
+  background-color: #FFF;
+  font-weight: bold;
+  color: #003;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TemperatureView from './TemperatureView';
 import MapView from './MapView';
 import SettingsView from './SettingsView';
+import NavMenu from './NavMenu';
 
 import appViews from './constants/AppViews';
 
@@ -42,7 +43,10 @@ export default class Application extends Component {
     }
 
     return (
-      <ViewComponent {...viewData} />
+      <div>
+        <ViewComponent {...viewData} />
+        <NavMenu currentAppView={CURRENT_VIEW} />
+      </div>
     );
   }
 }
