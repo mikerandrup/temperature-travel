@@ -5,7 +5,7 @@ import {EventEmitter} from 'events';
 
 const CHANGE_EVENT = '@@CHANGE';
 
-const defaultView = appViews.MapView;
+const defaultView = appViews.TemperatureView;
 let _currentView;
 
 class AppViewStore extends EventEmitter {
