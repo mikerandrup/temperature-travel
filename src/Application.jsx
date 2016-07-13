@@ -12,8 +12,8 @@ const viewData = {
   currentTemp: 83,
   targetTemp: 72,
 
-  currentLocation: 'Dallas TX USA',
-  targetLocation: 'San Diego CA USA',
+  currentLocation: 'Dallas',
+  targetLocation: 'San Diego',
 
   // maybe do current lat/lon & target lat/lon
 
