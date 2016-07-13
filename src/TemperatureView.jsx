@@ -9,7 +9,7 @@ export default class TemperatureView extends Component {
   render() {
     return (
       <div>
-        <div className={panelStyles.container}>
+        <div className={panelStyles.carouselContainer}>
           <SimpleCarousel>
             <DestinationPanel {...this.props} />
             <DistanceSpeedPanel {...this.props} />

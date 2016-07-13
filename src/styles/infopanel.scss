@@ -1,5 +1,13 @@
+@import "./shared.scss";
+
+$infopanel-background: #228;
+
+.carouselContainer {
+  height: $top-infopanel-height;
+  background-color: $infopanel-background;
+}
+
 .container {
-  background-color: #228;
   color: #FFF;
   text-align: center;
 }

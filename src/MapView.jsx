@@ -10,7 +10,7 @@ export default class MapView extends Component {
   render() {
     return (
       <div>
-        <div className={panelStyles.container}>
+        <div className={panelStyles.carouselContainer}>
           <SimpleCarousel>
             <TargetTemperaturePanel {...this.props} />
             <DistanceSpeedPanel {...this.props} />
