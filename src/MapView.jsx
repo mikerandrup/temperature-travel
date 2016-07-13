@@ -18,7 +18,6 @@ export default class MapView extends Component {
         </div>
 
         <GoogleStaticMap
-          height={300}
           latitude={30}
           longitude={-30}
         />

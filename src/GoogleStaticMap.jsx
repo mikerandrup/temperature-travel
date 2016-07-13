@@ -18,33 +18,25 @@ export default class GoogleStaticMap extends Component {
 
   static get propTypes() {
     return {
-      height: PropTypes.number.isRequired,
       latitude: PropTypes.number.isRequired,
       longitude: PropTypes.number.isRequired
     };
   }
 
-  buildImageUrl(width) {
-    return `https://placekitten.com/${width}/${this.props.height}`;
+  buildImageUrl(width, height) {
+    return `https://placekitten.com/g/${width}/${height}`;
   }
 
   render() {
-
-    const inlineStyles = {
-      height: `${this.props.height}px`
-    }
-
+    const inlineStyles = {};
     if (this.state.componentMounted) {
-      console.log(
-        'canvas node',
-        this.refs.canvas.style
-      );
-      const renderedWidth=500;
-      inlineStyles.backgroundImage = `url('${this.buildImageUrl(renderedWidth)}')`;
+      const renderedWidth=this.mapCanvasElement.clientWidth;
+      const renderedHeight=this.mapCanvasElement.clientHeight;
+      inlineStyles.backgroundImage = `url('${this.buildImageUrl(renderedWidth, renderedHeight)}')`;
     }
 
     return (
-      <div ref="canvas" className={styles.canvas} style={inlineStyles}/>
+      <div ref={c => this.mapCanvasElement= c} className={styles.canvas} style={inlineStyles}/>
     );
   }
 

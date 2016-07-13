@@ -1,5 +1,10 @@
+@import "./shared.scss";
+
 .canvas {
+  position: absolute;
+  top: $top-infopanel-height - 1;
+  bottom: $bottom-nav-height - 1;
   width: 100%;
   background-position: center;
-  background-repeat: none;
+  background-repeat: no-repeat;
 }
