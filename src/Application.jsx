@@ -3,12 +3,12 @@ import TemperatureView from './TemperatureView';
 import MapView from './MapView';
 import SettingsView from './SettingsView';
 import NavMenu from './NavMenu';
+import AppViewStore from './stores/AppViewStore';
 
 import appViews from './constants/AppViews';
 
-const CURRENT_VIEW = appViews.MapView;
-
 const viewData = {
+
   currentTemp: 83,
   targetTemp: 72,
 
@@ -24,9 +24,40 @@ const viewData = {
 };
 
 export default class Application extends Component {
+
+  constructor(props, context) {
+    super(props, context);
+    this.state = this.getState();
+    console.log('AppViewStore', AppViewStore);
+  }
+
+  getState() {
+    return {
+      currentAppView: AppViewStore.getCurrentAppView()
+    }
+  }
+
+  handleChange() {
+    this.setState(
+      this.getState()
+    );
+  }
+
+  componentDidMount() {
+    AppViewStore.addChangeListener(
+      this.handleChange.bind(this)
+    );
+  }
+
+  componentWillUnmount() {
+    AppViewStore.removeChangeListener(
+      this.handleChange.bind(this)
+    );
+  }
+
   render() {
     let ViewComponent = null;
-    switch (CURRENT_VIEW) {
+    switch (this.state.currentAppView) {
 
       case appViews.SettingsView:
         ViewComponent = SettingsView;
@@ -45,7 +76,7 @@ export default class Application extends Component {
     return (
       <div>
         <ViewComponent {...viewData} />
-        <NavMenu currentAppView={CURRENT_VIEW} />
+        <NavMenu currentAppView={this.state.currentAppView} />
       </div>
     );
   }
