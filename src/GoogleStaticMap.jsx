@@ -1,5 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './styles/googlemap.scss';
+import googleApiKey from './constants/GoogleMap.secret';
+
+const schemeAndHost = 'https://maps.googleapis.com/maps/api/staticmap';
+const zoomLevel = 2;
+
 
 export default class GoogleStaticMap extends Component {
 
@@ -23,8 +28,24 @@ export default class GoogleStaticMap extends Component {
     };
   }
 
+  static get getDefaultProps() {
+    return {
+      latitude: 20,
+      longitude: -20
+    };
+  }
+
   buildImageUrl(width, height) {
-    return `https://placekitten.com/g/${width}/${height}`;
+    const dimensions = `${width}x${height}`;
+    const center = `${this.props.latitude},${this.props.longitude}`;
+
+    return [
+      schemeAndHost,
+      '?', 'center=', center,
+      '&', 'zoom=', zoomLevel,
+      '&', 'size=', dimensions,
+      '&', 'key=', googleApiKey
+    ].join('');
   }
 
   render() {
