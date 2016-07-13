@@ -27,7 +27,8 @@ export default class NavMenu extends Component {
             [styles.navitem]: true,
             [styles.active]: isTemperature
         })}>
-          Temperature
+          <div className={styles.icon}>🌡</div>
+          <div className={styles.label}>Temperature</div>
         </div>
 
         <div onClick={appViewActions.mapViewActivated}
@@ -35,7 +36,8 @@ export default class NavMenu extends Component {
             [styles.navitem]: true,
             [styles.active]: isMap
         })}>
-          Map View
+          <div className={styles.icon}>🌍</div>
+          <div className={styles.label}>Map View</div>
         </div>
 
         <div onClick={appViewActions.settingsViewActivated}
@@ -43,7 +45,8 @@ export default class NavMenu extends Component {
             [styles.navitem]: true,
             [styles.active]: isSettings
         })}>
-          Settings
+          <div className={styles.icon}>⚙</div>
+          <div className={styles.label}>Settings</div>
         </div>
 
       </div>
