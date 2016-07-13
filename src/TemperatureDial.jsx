@@ -49,7 +49,12 @@ export default class TemperatureDial extends Component {
     const statusText = 'Seeking Target';
 
     return (
-      <div className={styles.container}>
+      <div className={classnames({
+          [styles.container]: true,
+          [styles.heating]: this.props.currentTemp < this.props.targetTemp,
+          [styles.cooling]: this.props.currentTemp > this.props.targetTemp,
+          [styles.idle]: this.props.currentTemp == this.props.targetTemp
+        })}>
         {this.renderMarks()}
         <div className={styles.targetTemp}>
           {this.props.targetTemp}

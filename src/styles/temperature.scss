@@ -2,8 +2,19 @@
   width: 100%;
   height: 300px;
   position: relative;
-  background-color: #08C;
   color: #FFF;
+}
+
+.heating {
+  background-color: #C30;
+}
+
+.cooling {
+  background-color: #08C;
+}
+
+.idle {
+  background-color: #555;
 }
 
 .marking {
