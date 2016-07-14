@@ -31,6 +31,7 @@ export default class SimpleCarousel extends Component {
     });
 
     event.preventDefault();
+    return false;
   }
 
   handleTouchMove(event) {
@@ -52,6 +53,7 @@ export default class SimpleCarousel extends Component {
     });
 
     event.preventDefault();
+    return false;
   }
 
   handleTouchEnd(event) {
@@ -63,6 +65,7 @@ export default class SimpleCarousel extends Component {
     });
 
     event.preventDefault();
+    return false;
   }
 
   renderDots() {
