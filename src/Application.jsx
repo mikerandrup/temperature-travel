@@ -28,7 +28,6 @@ export default class Application extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = this.getState();
-    console.log('AppViewStore', AppViewStore);
   }
 
   getState() {
@@ -37,8 +36,8 @@ export default class Application extends Component {
 
     return {
       currentAppView: getStore(AppViewStore).getCurrentAppView(),
-      actualTemperature: temperatureStore.getActualTemperature(),
-      targetTemperature: temperatureStore.getTargetTemperature()
+      currentTemp: temperatureStore.getActualTemperature(),
+      targetTemp: temperatureStore.getTargetTemperature()
     }
   }
 
@@ -60,10 +59,18 @@ export default class Application extends Component {
       'change',
       this.handleChange.bind(this)
     );
+    this.context.getStore(TemperatureStore).addListener(
+      'change',
+      this.handleChange.bind(this)
+    );
   }
 
   componentWillUnmount() {
     this.context.getStore(AppViewStore).removeListener(
+      'change',
+      this.handleChange.bind(this)
+    );
+    this.context.getStore(TemperatureStore).removeListener(
       'change',
       this.handleChange.bind(this)
     );
@@ -90,11 +97,10 @@ export default class Application extends Component {
     return (
       <div>
         <ViewComponent
-          currentTemp={this.state.actualTemperature}
-          targetTemp={this.state.targetTemperature}
+          {...this.state}
           {...viewData}
         />
-        <NavMenu currentAppView={this.state.currentAppView} />
+      <NavMenu {...this.state} />
       </div>
     );
   }

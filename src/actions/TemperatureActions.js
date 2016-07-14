@@ -17,4 +17,4 @@ const TemperatureActions = {
 
 };
 
-export default AppViewActions;
+export default TemperatureActions;

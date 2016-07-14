@@ -1,4 +1,6 @@
 import React, { PropTypes, Component } from 'react';
+
+import actions from './actions/TemperatureActions';
 import styles from './styles/temperature.scss';
 import classnames from 'classnames';
 
@@ -8,6 +10,10 @@ const stopDegrees = 160;
 
 export default class TemperatureDial extends Component {
 
+  constructor(props, context) {
+    super(props, context);
+  }
+
   static get propTypes() {
     return {
       currentTemp: PropTypes.number.isRequired,
@@ -15,8 +21,14 @@ export default class TemperatureDial extends Component {
     };
   }
 
-  renderMarks() {
+  static get contextTypes() {
+    return{
+      getStore: PropTypes.func.isRequired,
+      executeAction: PropTypes.func.isRequired
+    }
+  }
 
+  renderMarks() {
     const currentTempIndex = Math.round(this.props.currentTemp);
     const targetTempIndex = Math.round(this.props.targetTemp);
 
@@ -63,8 +75,24 @@ export default class TemperatureDial extends Component {
           {statusText}
         </div>
         <div className={styles.buttonHolder}>
-          <span className={this.decrease}>▼</span>
-          <span className={this.increase}>▲</span>
+          <span onClick={
+              this.context.executeAction.bind(
+                this, actions.targetTempDecreased
+              )
+            }
+            className={this.decrease}
+          >
+            ▼
+          </span>
+          <span onClick={
+              this.context.executeAction.bind(
+                this, actions.targetTempIncreased
+              )
+            }
+            className={this.increase}
+          >
+            ▲
+          </span>
         </div>
       </div>
     );
