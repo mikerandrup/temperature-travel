@@ -28,6 +28,7 @@ export default class TemperatureStore extends EventEmitter {
       MINIMUM_ALLOWED_TEMPERATURE,
       this._targetTemperature - 1
     );
+    console.log(this._targetTemperature);
     this.emit('change');
   }
 
@@ -36,6 +37,7 @@ export default class TemperatureStore extends EventEmitter {
       MAXIMUM_ALLOWED_TEMPERATURE,
       this._targetTemperature + 1
     );
+    console.log(this._targetTemperature);
     this.emit('change');
   }
 

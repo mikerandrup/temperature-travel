@@ -1,11 +1,8 @@
-import {createStore} from 'fluxible/addons';
 import appViews from '../constants/AppViews';
 import {ChangeView} from '../constants/ActionNames';
 import {EventEmitter} from 'events';
 
 const defaultView = appViews.TemperatureView;
-
-console.dir(new EventEmitter());
 
 export default class AppViewStore extends EventEmitter {
 
