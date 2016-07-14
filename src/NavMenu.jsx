@@ -2,14 +2,25 @@ import React, { PropTypes, Component } from 'react';
 import classnames from 'classnames';
 import appViews from './constants/AppViews';
 import styles from './styles/navmenu.scss';
-import appViewActions from './actions/AppViewActions';
+import actions from './actions/AppViewActions';
 
 export default class NavMenu extends Component {
+
+  constructor(props, context) {
+    super(props, context);
+  }
 
   static get propTypes() {
     return {
       currentAppView: PropTypes.number.isRequired
     };
+  }
+
+  static get contextTypes() {
+    return{
+      getStore: PropTypes.func.isRequired,
+      executeAction: PropTypes.func.isRequired
+    }
   }
 
   render() {
@@ -22,7 +33,11 @@ export default class NavMenu extends Component {
     return (
       <div className={styles.container}>
 
-        <div onClick={appViewActions.temperatureViewActivated}
+        <div onClick={
+            this.context.executeAction.bind(
+              this, actions.temperatureViewActivated
+            )
+          }
           className={classnames({
             [styles.navitem]: true,
             [styles.active]: isTemperature
@@ -31,7 +46,11 @@ export default class NavMenu extends Component {
           <div className={styles.label}>Temperature</div>
         </div>
 
-        <div onClick={appViewActions.mapViewActivated}
+        <div onClick={
+            this.context.executeAction.bind(
+              this, actions.mapViewActivated
+            )
+          }
           className={classnames({
             [styles.navitem]: true,
             [styles.active]: isMap
@@ -40,7 +59,11 @@ export default class NavMenu extends Component {
           <div className={styles.label}>Map View</div>
         </div>
 
-        <div onClick={appViewActions.settingsViewActivated}
+        <div onClick={
+            this.context.executeAction.bind(
+              this, actions.settingsViewActivated
+            )
+          }
           className={classnames({
             [styles.navitem]: true,
             [styles.active]: isSettings

@@ -1,26 +1,29 @@
 import appViews from '../constants/AppViews';
-import actionNames from '../constants/ActionNames';
+import {ChangeView} from '../constants/ActionNames';
 import eventemitter from 'events';
 
 const AppViewActions = {
 
-  temperatureViewActivated: () => {
-    Dispatcher.dispatch(
-      actionNames.ChangeView,
+  temperatureViewActivated: (context) => {
+    console.log('action happened');
+    context.dispatch(
+      ChangeView,
       appViews.TemperatureView
     );
   },
 
-  temperatureViewActivated: () => {
-    Dispatcher.dispatch(
-      actionNames.ChangeView,
-      appViews.TemperatureView
+  mapViewActivated: (context) => {
+    console.log('action happened');
+    context.dispatch(
+      ChangeView,
+      appViews.MapView
     );
   },
 
-  settingsViewActivated: () => {
-    Dispatcher.dispatch(
-      actionNames.ChangeView,
+  settingsViewActivated: (context) => {
+    console.log('action happened');
+    context.dispatch(
+      ChangeView,
       appViews.SettingsView
     );
   }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import TemperatureView from './TemperatureView';
 import MapView from './MapView';
 import SettingsView from './SettingsView';
@@ -33,7 +33,14 @@ export default class Application extends Component {
 
   getState() {
     return {
-      currentAppView: AppViewStore.getCurrentAppView()
+      currentAppView: this.context.getStore(AppViewStore).getCurrentAppView()
+    }
+  }
+
+  static get contextTypes() {
+    return{
+      getStore: PropTypes.func.isRequired,
+      executeAction: PropTypes.func.isRequired
     }
   }
 
@@ -44,13 +51,15 @@ export default class Application extends Component {
   }
 
   componentDidMount() {
-    AppViewStore.addChangeListener(
+    this.context.getStore(AppViewStore).addListener(
+      'change',
       this.handleChange.bind(this)
     );
   }
 
   componentWillUnmount() {
-    AppViewStore.removeChangeListener(
+    this.context.getStore(AppViewStore).removeListener(
+      'change',
       this.handleChange.bind(this)
     );
   }
