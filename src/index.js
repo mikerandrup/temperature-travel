@@ -5,10 +5,11 @@ import createElementWithContext from 'fluxible-addons-react/createElementWithCon
 
 import Application from './Application';
 import AppViewStore from './stores/AppViewStore';
+import TemperatureStore from './stores/TemperatureStore';
 
 const fluxibleApp = new Fluxible ({
 	component: Application,
-	stores: [AppViewStore]
+	stores: [AppViewStore, TemperatureStore]
 });
 
 fluxibleApp.rehydrate({}, (err, context) => {

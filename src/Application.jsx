@@ -1,16 +1,16 @@
 import React, { PropTypes, Component } from 'react';
+
+import appViews from './constants/AppViews';
+
+import AppViewStore from './stores/AppViewStore';
+import TemperatureStore from './stores/TemperatureStore';
+
 import TemperatureView from './TemperatureView';
 import MapView from './MapView';
 import SettingsView from './SettingsView';
 import NavMenu from './NavMenu';
-import AppViewStore from './stores/AppViewStore';
-
-import appViews from './constants/AppViews';
 
 const viewData = {
-
-  currentTemp: 83,
-  targetTemp: 72,
 
   currentLocation: 'Dallas',
   targetLocation: 'San Diego',
@@ -32,8 +32,13 @@ export default class Application extends Component {
   }
 
   getState() {
+    const getStore = this.context.getStore;
+    const temperatureStore = getStore(TemperatureStore);
+
     return {
-      currentAppView: this.context.getStore(AppViewStore).getCurrentAppView()
+      currentAppView: getStore(AppViewStore).getCurrentAppView(),
+      actualTemperature: temperatureStore.getActualTemperature(),
+      targetTemperature: temperatureStore.getTargetTemperature()
     }
   }
 
@@ -84,7 +89,11 @@ export default class Application extends Component {
 
     return (
       <div>
-        <ViewComponent {...viewData} />
+        <ViewComponent
+          currentTemp={this.state.actualTemperature}
+          targetTemp={this.state.targetTemperature}
+          {...viewData}
+        />
         <NavMenu currentAppView={this.state.currentAppView} />
       </div>
     );
